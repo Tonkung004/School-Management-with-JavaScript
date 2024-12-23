@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <%- include('menu') %>
+    <h1 class="mt-5" id="font2"><%= title %></h1>
+    <h4 class="mt-5" id="font3" style="text-align: center">
+      โปรดใส่ รหัสนักศึกษา และ ชื่อ-นามสกุล
+    </h4>
+    <%- include('messages') %> <% if (data) { %>
+    <form action="/student/update/<%= rows[0].idStd%>" method="post" >
+      <p>
+        <input id="font1" type="text" name="name"  placeholder="ชื่อ-นามสกุล" value="<%= rows[0].name %>"/>
+      </p>
+      <p>
+        <input id="font1" type="submit" value="แก้ไข" class="button" />
+        <a href="/student/list" class="buttonremove" id="font1">back</a>
+      </p>
+    </form>
+
+    <% } else { %>
+    <form action="/student/create" method="post">
+      <p>
+        <input type="text" name="idStd" placeholder="รหัสนักศึกษา" />
+      </p>
+      <p>
+        <input type="text" name="name" placeholder="ชื่อ-นามสกุล" />
+      </p>
+      <p>
+        <input type="submit" value="เพิ่ม" class="button" />
+        <a href="/student/list" class="buttonremove">back</a>
+      </p>
+    </form>
+    <%} %>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+<% if (locals.messages) { %>
+    <% messages.forEach((message) => { %>
+     <% if (message.type == 'error') { %>
+    <p class='<%= message.type %>' style="color: red;"><%= message.string %></p>
+    <% } else { %>
+        <p class='<%= message.type %>'><%= message.string %></p>
+    <% } %>
+    <% }) %>
+    <% removeMessages() %>
+<% } %>
